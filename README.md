@@ -12,9 +12,13 @@ System requirements
 Installation & Configuration
 ----------------------------
 
-Search for "All in One Accessibility" in Contao Manager or use command line.
+1. Search for "All in One Accessibility" in Contao Manager or use command line.
 
     composer require skynettechnologies/contao-allinoneaccessibility
+
+2. Go to Admin pannel -> Pages/Site structure  Now You can see All in One Accessibility Setting. Check "Enable allinoneaccessibility" and Save.
+
+3. Check your website.
 
 ## Documentation
 
