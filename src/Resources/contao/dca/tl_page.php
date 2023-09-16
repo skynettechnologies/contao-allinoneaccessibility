@@ -14,13 +14,13 @@ $GLOBALS['TL_CSS'][] = 'bundles/skynettechnologiescontaoallinoneaccessibility/cs
  * Extend the palettes.
  */
 
- $GLOBALS['TL_DCA']['tl_page']['palettes']['__selector__'][] = 'aioa_enable';
- $GLOBALS['TL_DCA']['tl_page']['palettes']['root'] .= ';{aioa_legend},aioa_enable';
- if (isset($GLOBALS['TL_DCA']['tl_page']['palettes']['rootfallback'])) {
-     $GLOBALS['TL_DCA']['tl_page']['palettes']['rootfallback'] .= ';{aioa_legend},aioa_enable';
- }
+$GLOBALS['TL_DCA']['tl_page']['palettes']['__selector__'][] = 'aioa_enable';
+$GLOBALS['TL_DCA']['tl_page']['palettes']['root'] .= ';{aioa_legend},aioa_enable';
+if (isset($GLOBALS['TL_DCA']['tl_page']['palettes']['rootfallback'])) {
+    $GLOBALS['TL_DCA']['tl_page']['palettes']['rootfallback'] .= ';{aioa_legend},aioa_enable';
+}
 
- $GLOBALS['TL_DCA']['tl_page']['subpalettes']['aioa_enable'] = 'aioa_license_key,aioa_color,aioa_position,aioa_icon_type,aioa_icon_size';
+$GLOBALS['TL_DCA']['tl_page']['subpalettes']['aioa_enable'] = 'aioa_license_key,aioa_color,aioa_position,aioa_icon_type,aioa_icon_size';
 
  /*
   * Add the fields
@@ -37,7 +37,7 @@ $GLOBALS['TL_CSS'][] = 'bundles/skynettechnologiescontaoallinoneaccessibility/cs
      'label' => &$GLOBALS['TL_LANG']['tl_page']['aioa_license_key'],
      'exclude' => true,
      'inputType' => 'text',
-     'eval' => ['tl_class' => 'w40','onchange' => "GetValue(this.value);",'placeholder' => 'License Key'],
+     'eval' => ['tl_class' => 'fullwidth-col-md-12','onchange' => "checkLicenseKey(this.value);",'placeholder' => 'License Key'],
      'sql' => 'text NULL',
  ];
 
@@ -46,7 +46,7 @@ $GLOBALS['TL_CSS'][] = 'bundles/skynettechnologiescontaoallinoneaccessibility/cs
     'default' => '600b96',
     'exclude' => true,
     'inputType' => 'text',
-    'eval' => array('maxlength'=>6, 'size'=>1, 'colorpicker'=>true, 'isHexColor'=>true, 'tl_class'=>'w60','placeholder' => 'Hexa Color Code','mandatory' => true,),
+    'eval' => array('maxlength'=>6, 'size'=>1, 'colorpicker'=>true, 'isHexColor'=>true,'tl_class'=>'common-class width-col-md-3','placeholder' => 'Hexa Color Code'),
     'sql' => "text NULL",
 ];
 
@@ -55,9 +55,9 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['aioa_position'] = [
     'default' => 'bottom_right',
     'exclude' => true,
     'inputType' => 'select',
-    'options' => ['bottom_right','bottom_left','bottom_center','top_left', 'top_center','top_right','middel_left','middel_right'],
+    'options' => ['bottom_right','bottom_left','bottom_center','top_left','top_right','top_center','middel_left','middel_right'],
     'reference' => &$GLOBALS['TL_LANG']['tl_page']['aioa_position'],
-    'eval' => ['tl_class' => 'long','mandatory' => true,],
+    'eval' => ['tl_class'=>'common-class width-col-md-3'],
     'sql' => 'text NULL',
 ];
 
@@ -69,7 +69,7 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['aioa_icon_type'] = [
     'options' => ['aioa-icon-type-1' => '<img src="https://skynettechnologies.com/sites/default/files/python/aioa-icon-type-1.svg" width="65" height="65" id="aioa-icon-type-1-img" style="margin: auto"/>',
                 'aioa-icon-type-2' => '<img src="https://skynettechnologies.com/sites/default/files/python/aioa-icon-type-2.svg" width="65" height="65" id="aioa-icon-type-2-img" style="margin: auto"/>',
                 'aioa-icon-type-3' => '<img src="https://skynettechnologies.com/sites/default/files/python/aioa-icon-type-3.svg" width="65" height="65" id="aioa-icon-type-3-img" style="margin: auto"/>'],
-    'eval' => ['tl_class' => 'long','style' =>'border:2px','onchange' => "ChangeIcon(this.value);"],
+    'eval' => ['tl_class'=>'width-col-md-12 common-class','style' =>'border:2px','onchange' => "ChangeIcon(this.value);"],
     'sql' => "text NULL",
 ];
 
@@ -84,7 +84,7 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['aioa_icon_size'] = [
                 'aioa-small-icon' => '<img src="https://skynettechnologies.com/sites/default/files/python/aioa-icon-type-1.svg" width="45" height="45" style="margin: auto" class="icon-img"/>',
                 'aioa-extra-small-icon' => '<img src="https://skynettechnologies.com/sites/default/files/python/aioa-icon-type-1.svg" width="35" height="35" style="margin: auto" class="icon-img"/>',
                     ],
-    'eval' => ['tl_class' => 'long'],
+    'eval' => ['tl_class'=>'common-class width-col-md-12'],
     'sql' => "text NULL",
 ];
 

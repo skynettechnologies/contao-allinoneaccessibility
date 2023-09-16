@@ -66,3 +66,75 @@ input[type=radio]+label>img {
 #ctrl_aioa_icon_size br, #ctrl_aioa_icon_type br {
 	display: none;
 }
+
+.link-color{
+	color: #6aaadf !important;
+}
+.common-class{
+	display: none;
+}
+
+#sub_aioa_enable{
+	@media screen and (min-width: 768px) {
+		display: flex;
+		flex-wrap: wrap;
+		margin-left: -15px;
+		margin-right: -15px;
+	}
+}
+.width-col-md-3{
+	flex: 0 0 calc(25% - 30px);
+	width: calc(25% - 30px);
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.width-col-md-6{
+	flex: 0 0 calc(50% - 30px);
+	width: calc(50% - 30px);
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.width-col-md-12{
+	flex: 0 0 calc(80% - 30px);
+	width: calc(80% - 30px);
+	padding-left: 15px;
+	padding-right: 15px;
+}
+#invalid-key-msg{
+	color:red;
+	margin-bottom: 0.5rem;
+	margin-top: -10px;
+}
+.fullwidth-col-md-12{
+	flex: 0 0 calc(100% - 30px);
+	width: calc(100% - 30px);
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.fullwidth-col-md-12 > *{
+	width: 50%;
+}
+
+#tl_CusLoaderBox{
+	width:300px;padding:2em;
+	box-sizing:border-box;
+	position:absolute;
+	left:50%;
+	margin-left:-150px;
+	background:#fff url(../icons/loading.gif) no-repeat right 2em center;
+	border:2px solid #111;
+	border-radius:2px;
+	font-size:1rem;
+	text-align:left
+}
+
+#tl_CusLoaderOverlay
+{
+	width:100%;
+	height:100%;
+	position:absolute;
+	top:0;left:0;
+	background:#fff;opacity:.5
+}
