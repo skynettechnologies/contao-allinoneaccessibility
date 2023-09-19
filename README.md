@@ -2,7 +2,7 @@
 
 All in One Accessibility is an extension for the [Contao Open Source CMS](https://contao.org).
 
-All in One Accessibility widget improves Contao website ADA compliance and browser experience for WCAG 2.1, ATAG 2.0, ADA, Section 508, Australian DDA, European EAA EN 301 549, UK Equality Act (EA), Israeli Standard 5568, and California Unruh standards.
+All in One Accessibility widget improves Contao website ADA compliance and browser experience for ADA, WCAG 2.1, Section 508, Australian DDA, European EAA EN 301 549, UK Equality Act (EA), Israeli Standard 5568, California Unruh, Ontario AODA, Canada ACA, German BITV, and France RGAA Standards.
 
 System requirements
 -------------------
