@@ -26,8 +26,16 @@ class AioaTemplateListener
 
         if (null !== ($rootPage = PageModel::findByPk($GLOBALS['objPage']->rootId)) && $rootPage->aioa_enable) {
             $data = $rootPage->row();
+            
+            if($data['aioa_color'] == '' || empty($data['aioa_color'])){
+                $data['aioa_color'] ='600b96';
+            }
 
-            $GLOBALS['TL_BODY'][] = "<script id='aioa-adawidgetnew' src='https://www.skynettechnologies.com/accessibility/js/all-in-one-accessibility-js-widget-minify.js?colorcode=#".str_replace('#', '', $data["aioa_color"])."&token=".$data['aioa_license_key']."&position=".$data['aioa_position'].".".$data['aioa_icon_type'].".".$data['aioa_icon_size']."' async='true'>
+            if($data['aioa_position'] == '' || empty($data['aioa_position'])){
+                $data['aioa_position'] ='bottom_right';
+            }
+
+            $GLOBALS['TL_BODY'][] = "<script id='aioa-adawidget' src='https://www.skynettechnologies.com/accessibility/js/all-in-one-accessibility-js-widget-minify.js?colorcode=#".str_replace('#', '', $data["aioa_color"])."&token=".$data['aioa_license_key']."&position=".$data['aioa_position'].".".$data['aioa_icon_type'].".".$data['aioa_icon_size']."' async='true'>
             </script>";
         }
 

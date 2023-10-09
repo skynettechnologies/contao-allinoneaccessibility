@@ -19,8 +19,8 @@ $GLOBALS['TL_LANG']['tl_page']['aioa_enable'] = [
     'Display the ADA widget on the website.',
 ];
 $GLOBALS['TL_LANG']['tl_page']['aioa_license_key'] = [
-    'License Key',
-    '<p id="invalid-key-msg">Key is Invalid!</p><span id="license_key_msg">Please <a href="https://ada.skynettechnologies.us/trial-subscription?utm_source='.$_SERVER['SERVER_NAME'].'&utm_medium=contao-extension&utm_campaign=trial-subscription" target="_blank" class="link-color">subscribe</a>  for a 10 days free trial and receive a license key to enable 52+ features of All in One Accessibility Pro.<br>No payment charged upfront, Cancel anytime.</span>',
+    'License key required for full version:',
+    '<p id="invalid-key-msg">Key is Invalid!</p><span id="license_key_msg">Please<a href="https://www.skynettechnologies.com/add-ons/cart/?add-to-cart=116&variation_id=117&quantity=1&utm_source='.$_SERVER['SERVER_NAME'].'&utm_medium=contao-extension&utm_campaign=purchase-plan" target="_blank" class="link-color"> Upgrade</a>  to full version of All in One Accessibility Pro.</span>',
 ];
 $GLOBALS['TL_LANG']['tl_page']['aioa_position'] = ['Position', 'Here you can choose the ADA widget position.'];
 $GLOBALS['TL_LANG']['tl_page']['aioa_color'] = [

@@ -1,9 +1,19 @@
 window.addEventListener("DOMContentLoaded", function() {
     let aioa_license_key = document.querySelector('[name="aioa_license_key"]');
+    let aioa_icontype = document.querySelector( 'input[name="aioa_icon_type"]:checked');
+    let iconColor = document.getElementsByName("aioa_color")[0].value;
+                
+    if(iconColor == ''){
+        document.getElementsByName("aioa_color")[0].value = '600b96';
+    }
 
     if(aioa_license_key != null){
         checkLicenseKey(aioa_license_key.value);
     }
+    if(aioa_icontype.value != ''){
+        ChangeIcon(aioa_icontype.value)
+    }
+    
 });
 
 function ChangeIcon(val){
@@ -56,11 +66,7 @@ function checkLicenseKey(key){
             if (response.valid == 1) {
                 const iconTypeArrSize = document.querySelectorAll('input[name="aioa_icon_type"]:checked');
                 const iconSizeArrSize = document.querySelectorAll('input[name="aioa_icon_size"]:checked');
-                var iconColor = document.getElementsByName("aioa_color")[0].value;
-
-                if(iconColor == ''){
-                    document.getElementsByName("aioa_color")[0].value = '600b96';
-                }
+                
 
                 if(iconTypeArrSize.length == 0) {
                     if(document.getElementById("opt_aioa_icon_type_0") != null){
@@ -80,10 +86,14 @@ function checkLicenseKey(key){
                     el.style.display = 'block';
                 });
             }else{
+                console.log(document.querySelector('[name="aioa_license_key"]').value);
+                if(document.querySelector('[name="aioa_license_key"]').value == ''){
+                    elementvalidKeyMsg.classList.add('d-none');
+                }else{
+                    elementvalidKeyMsg.classList.remove('d-none');
+                }
 
                 elementMsg.classList.remove('d-none');
-                elementvalidKeyMsg.classList.remove('d-none');
-
                 elements.forEach(el => {
                     el.style.display = 'none';
                 });
@@ -120,9 +130,4 @@ function saveData(){
       };
       request.send(params);
 }
-// window.onload = function() {
-//     window.setTimeout(fadeout, 8000); //8 seconds
-// }
-// function fadeout() {
-//     document.getElementById('invalid-key-msg').style.opacity = '0';
-// }
+

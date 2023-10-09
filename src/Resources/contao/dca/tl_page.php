@@ -37,7 +37,7 @@ $GLOBALS['TL_DCA']['tl_page']['subpalettes']['aioa_enable'] = 'aioa_license_key,
      'label' => &$GLOBALS['TL_LANG']['tl_page']['aioa_license_key'],
      'exclude' => true,
      'inputType' => 'text',
-     'eval' => ['tl_class' => 'fullwidth-col-md-12','onchange' => "checkLicenseKey(this.value);",'placeholder' => 'License Key'],
+     'eval' => ['tl_class' => 'fullwidth-col-md-12','onchange' => "checkLicenseKey(this.value);",'placeholder' => 'License key required for full version'],
      'sql' => 'text NULL',
  ];
 
@@ -46,7 +46,7 @@ $GLOBALS['TL_DCA']['tl_page']['subpalettes']['aioa_enable'] = 'aioa_license_key,
     'default' => '600b96',
     'exclude' => true,
     'inputType' => 'text',
-    'eval' => array('maxlength'=>6, 'size'=>1, 'colorpicker'=>true, 'isHexColor'=>true,'tl_class'=>'common-class width-col-md-3','placeholder' => 'Hexa Color Code'),
+    'eval' => array('maxlength'=>6, 'size'=>1, 'colorpicker'=>true, 'isHexColor'=>true,'tl_class'=>'width-col-md-3','placeholder' => 'Hexa Color Code'),
     'sql' => "text NULL",
 ];
 
@@ -57,7 +57,7 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['aioa_position'] = [
     'inputType' => 'select',
     'options' => ['bottom_right','bottom_left','bottom_center','top_left','top_right','top_center','middel_left','middel_right'],
     'reference' => &$GLOBALS['TL_LANG']['tl_page']['aioa_position'],
-    'eval' => ['tl_class'=>'common-class width-col-md-3'],
+    'eval' => ['tl_class'=>'width-col-md-3'],
     'sql' => 'text NULL',
 ];
 
