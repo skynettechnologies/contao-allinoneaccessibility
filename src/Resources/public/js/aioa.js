@@ -2,18 +2,34 @@ window.addEventListener("DOMContentLoaded", function() {
     let aioa_license_key = document.querySelector('[name="aioa_license_key"]');
     let aioa_icontype = document.querySelector( 'input[name="aioa_icon_type"]:checked');
     let iconColor = document.getElementsByName("aioa_color")[0].value;
-                
+    var validKeyMsg = document.getElementById('invalid-key-msg');
+     
+    if(document.querySelector('[name="aioa_license_key"]').value == ''){
+        validKeyMsg.classList.add('d-none');
+    }else{
+        validKeyMsg.classList.remove('d-none');
+    }
+
     if(iconColor == ''){
         document.getElementsByName("aioa_color")[0].value = '600b96';
     }
 
     if(aioa_license_key != null){
         checkLicenseKey(aioa_license_key.value);
+    }else{
+        setCouponBanner();
     }
-    if(aioa_icontype.value != ''){
-        ChangeIcon(aioa_icontype.value)
+
+    if(aioa_icontype != null){
+        if(aioa_icontype.value != ''){
+            ChangeIcon(aioa_icontype.value)
+        }
     }
-    
+
+    var iDiv = document.createElement("div");
+    iDiv.id = 'dicount_banner';
+    iDiv.className = 'dicount_banner';
+    document.getElementById('sub_aioa_enable').prepend(iDiv);
 });
 
 function ChangeIcon(val){
@@ -21,6 +37,18 @@ function ChangeIcon(val){
     arrSize.forEach(function(item){
         item.setAttribute("src","https://skynettechnologies.com/sites/default/files/python/"+val+".svg");
     });
+}
+
+function setCouponBanner(){
+    var coupon_url = 'https://www.skynettechnologies.com/add-ons/discount_offer.php?platform=contao';
+    fetch(coupon_url)
+    .then(function (response) {
+        return response.text();
+    })
+    .then(function (body) {
+        document.getElementById("dicount_banner").innerHTML = body;
+    });
+
 }
 
 /* add Loader Div */
@@ -41,6 +69,7 @@ let add_element = () => {
 /* add Loader Div */
 
 function checkLicenseKey(key){
+    console.log(5476)
     add_element();
 
     var server_name = window.location.hostname;
@@ -62,8 +91,11 @@ function checkLicenseKey(key){
             var elementMsg = document.getElementById('license_key_msg');
             var elementvalidKeyMsg = document.getElementById('invalid-key-msg');
             var elements = document.querySelectorAll('.common-class');
+            var elementCouponBanner = document.getElementById('dicount_banner');
 
             if (response.valid == 1) {
+                
+                elementCouponBanner.classList.add('d-none');
                 const iconTypeArrSize = document.querySelectorAll('input[name="aioa_icon_type"]:checked');
                 const iconSizeArrSize = document.querySelectorAll('input[name="aioa_icon_size"]:checked');
                 
@@ -86,7 +118,8 @@ function checkLicenseKey(key){
                     el.style.display = 'block';
                 });
             }else{
-                console.log(document.querySelector('[name="aioa_license_key"]').value);
+                elementCouponBanner.classList.remove('d-none');
+                setCouponBanner();
                 if(document.querySelector('[name="aioa_license_key"]').value == ''){
                     elementvalidKeyMsg.classList.add('d-none');
                 }else{

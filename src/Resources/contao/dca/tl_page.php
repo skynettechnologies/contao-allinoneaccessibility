@@ -15,6 +15,7 @@ $GLOBALS['TL_CSS'][] = 'bundles/skynettechnologiescontaoallinoneaccessibility/cs
  */
 
 $GLOBALS['TL_DCA']['tl_page']['palettes']['__selector__'][] = 'aioa_enable';
+
 $GLOBALS['TL_DCA']['tl_page']['palettes']['root'] .= ';{aioa_legend},aioa_enable';
 if (isset($GLOBALS['TL_DCA']['tl_page']['palettes']['rootfallback'])) {
     $GLOBALS['TL_DCA']['tl_page']['palettes']['rootfallback'] .= ';{aioa_legend},aioa_enable';
@@ -37,7 +38,7 @@ $GLOBALS['TL_DCA']['tl_page']['subpalettes']['aioa_enable'] = 'aioa_license_key,
      'label' => &$GLOBALS['TL_LANG']['tl_page']['aioa_license_key'],
      'exclude' => true,
      'inputType' => 'text',
-     'eval' => ['tl_class' => 'fullwidth-col-md-12','onchange' => "checkLicenseKey(this.value);",'placeholder' => 'License key required for full version'],
+     'eval' => ['tl_class' => 'fullwidth-col-md-12','onkeyup' => "checkLicenseKey(this.value);",'placeholder' => 'License key required for full version'],
      'sql' => 'text NULL',
  ];
 

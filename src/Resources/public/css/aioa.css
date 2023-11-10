@@ -1,3 +1,26 @@
+body .dicount_banner{
+	width: 100%;
+	margin-top: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    display: flex;
+}
+body .ada-banner-section{
+	width: 100%;
+    margin-left: 15px;
+    margin-right: 15px;
+    flex: 1;
+	padding-left: 15px;
+    padding-right: 15px;
+}
+body #main .ada-banner-section>.content{
+	margin: 0;
+	background: transparent;
+	border: none;
+}
+.ada-banner-section .inner-wrapper .code h3{
+	height: auto;
+}
 /* Radio Button Css */
 input[name="aioa_icon_type"],
 input[name="aioa_icon_size"] {
