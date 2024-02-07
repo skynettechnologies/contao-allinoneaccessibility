@@ -15,7 +15,7 @@
 
 
 $GLOBALS['TL_LANG']['tl_page']['aioa_enable'] = [
-    'Enable allinoneaccessibility',
+    'Enable All in One Accessibility',
     'Display the ADA widget on the website.',
 ];
 $GLOBALS['TL_LANG']['tl_page']['aioa_license_key'] = [
