@@ -5,7 +5,7 @@ window.addEventListener("DOMContentLoaded", function() {
     var validKeyMsg = document.getElementById('invalid-key-msg');
      
     if(document.querySelector('[name="aioa_license_key"]').value == ''){
-        validKeyMsg.classList.add('d-none');
+        validKeyMsg.classList.remove('d-none');
     }else{
         validKeyMsg.classList.remove('d-none');
     }
@@ -27,10 +27,12 @@ window.addEventListener("DOMContentLoaded", function() {
 });
 
 function ChangeIcon(val){
+    console.log(val);
     const arrSize = document.querySelectorAll(".icon-img");
     arrSize.forEach(function(item){
         item.setAttribute("src","https://skynettechnologies.com/sites/default/files/python/"+val+".svg");
     });
+    saveData();
 }
 
 /* add Loader Div */
@@ -117,18 +119,20 @@ function checkLicenseKey(key){
       request.send(params);
 }
 
-function saveData(){
+ 
 
+function saveData(){
+    
     var server_name = window.location.origin;
     var color = document.getElementsByName("aioa_color")[0].value;
-    var position = document.getElementsByName("aioa_position")[0].value;
-    var icon_type = document.getElementsByName("aioa_icon_type")[0].value;
-    var icon_size = document.getElementsByName("aioa_icon_size")[0].value;
-
+    var position = document.getElementById("ctrl_aioa_position").value;
+    var icon_type = document.querySelector('input[name="aioa_icon_type"]:checked').value;
+    var icon_size = document.querySelector('input[name="aioa_icon_size"]:checked').value;
+    
     var request = new XMLHttpRequest();
     var url =  'https://ada.skynettechnologies.us/api/widget-setting-update-platform';
     var params = "u=" + server_name +"&widget_position=" + position +"&widget_color_code=" + color +"&widget_icon_type=" + icon_type +"&widget_icon_size="+ icon_size;
-
+   
     request.open('POST', url, true);
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
@@ -136,9 +140,12 @@ function saveData(){
 
         if (request.readyState === XMLHttpRequest.DONE) {
           if (request.status === 200) {
+           
             }
         }
       };
       request.send(params);
 }
+
+
 
