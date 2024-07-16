@@ -35,6 +35,7 @@ class AioaTemplateListener
                 $data['aioa_position'] ='bottom_right';
             }
 
+            /* load Js */
             $GLOBALS['TL_BODY'][] = "<script id='aioa-adawidget' src='https://www.skynettechnologies.com/accessibility/js/all-in-one-accessibility-js-widget-minify.js?colorcode=#".str_replace('#', '', $data["aioa_color"])."&token=".$data['aioa_license_key']."&position=".$data['aioa_position'].".".$data['aioa_icon_type'].".".$data['aioa_icon_size']."' async='true'>
             </script>";
         }
