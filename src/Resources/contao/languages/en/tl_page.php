@@ -10,7 +10,7 @@
  */
 
 /**
- * Fields.
+ * Fields Textes
  */
 
 
@@ -18,26 +18,31 @@ $GLOBALS['TL_LANG']['tl_page']['aioa_enable'] = [
     'Enable All in One Accessibility',
     'Display the ADA widget on the website.',
 ];
+
+/* Note for License key Input */
 $GLOBALS['TL_LANG']['tl_page']['aioa_license_key'] = [
     'License key required for full version:',
     '<p id="invalid-key-msg">Key is Invalid!</p><span id="license_key_msg">Please<a href="https://www.skynettechnologies.com/add-ons/cart/?add-to-cart=116&variation_id=117&quantity=1&utm_source='.$_SERVER['SERVER_NAME'].'&utm_medium=contao-extension&utm_campaign=purchase-plan" target="_blank" class="link-color"> Upgrade</a>  to full version of All in One Accessibility Pro.</span>',
 ];
+/* Note for Position Input */
 $GLOBALS['TL_LANG']['tl_page']['aioa_position'] = ['Position', 'Here you can choose the ADA widget position.'];
+
+/* Note for Color Input */
 $GLOBALS['TL_LANG']['tl_page']['aioa_color'] = [
     'Hex Color Code',
     'Here you can select icon color.'
 ];
+
+/* Label  for Icon type Input */
 $GLOBALS['TL_LANG']['tl_page']['aioa_icon_type'] = ['Icon Type'];
+
+/* Label  for Icon size Input */
 $GLOBALS['TL_LANG']['tl_page']['aioa_icon_size'] = ['Icon Size'];
 
-/*
- * Legends
- */
+
 $GLOBALS['TL_LANG']['tl_page']['aioa_legend'] = 'All in One Accessibility Setting';
 
-/*
- * Reference
- */
+/* Position Labels */
 
 $GLOBALS['TL_LANG']['tl_page']['aioa_position']['bottom_right'] = 'Bottom Right';
 $GLOBALS['TL_LANG']['tl_page']['aioa_position']['bottom_center'] = 'Bottom Center';

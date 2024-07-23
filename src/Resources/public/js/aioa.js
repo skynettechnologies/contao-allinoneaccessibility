@@ -1,3 +1,4 @@
+/* default form setting set when load the form */
 window.addEventListener("DOMContentLoaded", function() {
     let aioa_license_key = document.querySelector('[name="aioa_license_key"]');
     let aioa_icontype = document.querySelector( 'input[name="aioa_icon_type"]:checked');
@@ -26,6 +27,7 @@ window.addEventListener("DOMContentLoaded", function() {
 
 });
 
+/* set icon-size img url as per change icon type */
 function ChangeIcon(val){
     console.log(val);
     const arrSize = document.querySelectorAll(".icon-img");
@@ -35,7 +37,7 @@ function ChangeIcon(val){
     saveData();
 }
 
-/* add Loader Div */
+/* add Div for Loder*/
 let add_element = () => {
     const template = document.createElement('div');
     template.innerHTML = "Loading data …";
@@ -50,8 +52,8 @@ let add_element = () => {
     bgtemplate.style.top = '800px';
     document.body.appendChild(bgtemplate);
 }
-/* add Loader Div */
 
+/* here check the key valid or not */
 function checkLicenseKey(key){
     
     add_element();
@@ -120,7 +122,7 @@ function checkLicenseKey(key){
 }
 
  
-
+/* Save the setting data in Dashboard */
 function saveData(){
     
     var server_name = window.location.origin;

@@ -25,6 +25,8 @@ class Plugin implements BundlePluginInterface
     /**
      * @return array
      */
+
+    /* Load SkynettechnologiesContaoAllinoneaccessibility */
     public function getBundles(ParserInterface $parser)
     {
         return [

@@ -21,6 +21,8 @@ class AioaTemplateListener
      *
      * @Hook("replaceDynamicScriptTags", priority=-1)
      */
+
+    /* add script on frontend with dynamic settings parameters */
     public function onReplaceDynamicScriptTags(string $buffer): string
     {
 
@@ -42,6 +44,5 @@ class AioaTemplateListener
 
         return $buffer;
     }
-
 
 }

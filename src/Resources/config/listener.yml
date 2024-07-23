@@ -1,4 +1,4 @@
 services:
-
+# load the AioaTemplateListener 
     skynettechnologies.allinoneaccessibility.aioa_template_listener:
         class: Skynettechnologies\ContaoAllinoneaccessibility\EventListener\AioaTemplateListener

@@ -16,6 +16,9 @@ $GLOBALS['TL_CSS'][] = 'bundles/skynettechnologiescontaoallinoneaccessibility/cs
 
 $GLOBALS['TL_DCA']['tl_page']['palettes']['__selector__'][] = 'aioa_enable';
 
+/*
+* Add (enable All in One Accessibility) checkbox field
+*/
 $GLOBALS['TL_DCA']['tl_page']['palettes']['root'] .= ';{aioa_legend},aioa_enable';
 if (isset($GLOBALS['TL_DCA']['tl_page']['palettes']['rootfallback'])) {
     $GLOBALS['TL_DCA']['tl_page']['palettes']['rootfallback'] .= ';{aioa_legend},aioa_enable';
@@ -89,6 +92,7 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['aioa_icon_size'] = [
     'sql' => "text NULL",
 ];
 
+/* add aioa.js file for some logic. which are uses in setting form */
 $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/skynettechnologiescontaoallinoneaccessibility/js/aioa.js|static';
 
 
