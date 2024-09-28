@@ -19,7 +19,7 @@ English (USA), English (UK), English (Australian), English (Canadian), English (
 ## Installation
 
 ### Prerequisites
-- Contao version ^4.9 
+- Contao version ^5.0 
 
 ### Steps
 
