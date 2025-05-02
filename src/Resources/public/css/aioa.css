@@ -21,12 +21,74 @@ body #main .ada-banner-section>.content{
 .ada-banner-section .inner-wrapper .code h3{
 	height: auto;
 }
+
+#ctrl_aioa_icon_type {
+     
+    display: flex;
+    flex-wrap: wrap;
+}
+#ctrl_aioa_widget_size legend
+{
+    margin-bottom: 10px;
+}
+#ctrl_aioa_icon_type legend,
+#ctrl_aioa_icon_size legend {
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+#sub_aioa_enable h3
+{
+     margin-bottom: 10px;
+}
+.aioa-radio-wrapper.widget .aioa-single-radio {
+    flex: 0 0 auto;
+    margin-bottom: 20px;
+}
+
+.aioa-icon-position-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+.aioa-icon-position-wrapper .width-col-md-6 {
+    width: calc(50% - 60px);
+    flex: calc(50% - 60px);
+}
+
 /* Radio Button Css */
 input[name="aioa_icon_type"],
 input[name="aioa_icon_size"] {
 	position: absolute;
 	left: -9999px;
 }
+.icon-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    max-width: 500px;
+}
+
+.icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.icon-item input {
+    display: none; /* Hide radio buttons */
+}
+
+.icon-item img {
+    border: 2px solid transparent;
+    border-radius: 5px;
+}
+
+.icon-item input:checked + img {
+    border: 2px solid #007bff; /* Highlight selected icon */
+}
+
+
+
 
 #ctrl_aioa_icon_type input[type=radio]+label,
 #ctrl_aioa_icon_size input[type=radio]+label {
@@ -34,7 +96,7 @@ input[name="aioa_icon_size"] {
 	height: 100px;
 	padding: 10px !important;
 	text-align: center;
-	background-color: #f7f9ff;
+	background-color: #000000 !important;
 	outline: 4px solid #f7f9ff;
 	outline-offset: -4px;
 	border-radius: 10px;

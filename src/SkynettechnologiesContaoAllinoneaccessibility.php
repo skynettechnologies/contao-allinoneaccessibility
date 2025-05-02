@@ -13,7 +13,7 @@ namespace Skynettechnologies\ContaoAllinoneaccessibility;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * Class SkynettechnologiesContaoAllinoneaccessibility.
+ * Class SkynettechnologiesContaoAllinoneaccessibility. 
  */
 class SkynettechnologiesContaoAllinoneaccessibility extends Bundle
 {

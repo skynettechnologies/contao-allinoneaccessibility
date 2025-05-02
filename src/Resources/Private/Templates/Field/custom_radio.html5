@@ -1,0 +1,6 @@
+<fieldset id="{{field.id}}" class="{{field.class}}">
+    <div class="aioa-radio-wrapper">
+        <legend>{{field.label}}</legend>
+        {{field.input}}
+    </div>
+</fieldset>

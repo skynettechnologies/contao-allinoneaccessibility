@@ -19,14 +19,12 @@ use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
  * Class Plugin.
  *
  * @codeCoverageIgnore
- */
+ */ 
 class Plugin implements BundlePluginInterface
 {
     /**
      * @return array
      */
-
-    /* Load SkynettechnologiesContaoAllinoneaccessibility */
     public function getBundles(ParserInterface $parser)
     {
         return [

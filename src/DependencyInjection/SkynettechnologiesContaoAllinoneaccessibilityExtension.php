@@ -16,7 +16,7 @@ use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
 /**
- * Class SkynettechnologiesContaoAllinoneaccessibilityExtension.
+ * Class SkynettechnologiesContaoAllinoneaccessibilityExtension. 
  *
  * @codeCoverageIgnore
  */
@@ -25,8 +25,6 @@ class SkynettechnologiesContaoAllinoneaccessibilityExtension extends Extension
     /**
      * @throws \Exception
      */
-
-    /* load listener.yml which is using call AioaTemplateListener.php */
     public function load(array $configs, ContainerBuilder $container): void
     {
         $loader = new YamlFileLoader(

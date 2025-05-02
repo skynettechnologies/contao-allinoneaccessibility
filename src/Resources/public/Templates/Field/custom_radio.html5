@@ -1,0 +1,9 @@
+<fieldset id="{{field.id}}" class="{{field.class}}">
+    <div class="aioa-radio-wrapper">
+        <legend>{{field.label}}</legend>
+        {{field.input}}
+    </div>
+</fieldset>
+
+<!-- Debugging: -->
+<p>Template Loaded</p> <!-- Add this line to check if the template is being used -->
