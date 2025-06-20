@@ -278,10 +278,7 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['aioa_icon_type']['eval']['tl_class'] = 
 
 for ($i = 1; $i <= 29; $i++) {
     $key = "aioa-icon-type-$i";
-    $GLOBALS['TL_DCA']['tl_page']['fields']['aioa_icon_type']['options'][$key] = 
-        '<img src="https://www.skynettechnologies.com/sites/default/files/aioa-icon-type-' . $i . '.svg" width="65" height="65" id="aioa-icon-type-' . $i . '-img" style="margin: auto"/>';
-
-    
+        $GLOBALS['TL_DCA']['tl_page']['fields']['aioa_icon_type']['options'][$key] = '<img src="bundles/skynettechnologiescontaoallinoneaccessibility/icons/aioa-icon-type-' . $i . '.svg" width="65" height="65" id="aioa-icon-type-' . $i . '-img" style="margin: auto"/>';
 }
 
 // widget icon custom size
@@ -328,11 +325,11 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['aioa_icon_size'] = [
     'exclude' => true,
     'inputType' => 'radio',
     'options' => [
-        'aioa-big-icon' => '<img src="https://skynettechnologies.com/sites/default/files/python/aioa-icon-type-1.svg" width="75" height="75" style="margin: auto" class="icon-img"/>',
-        'aioa-medium-icon' => '<img src="https://skynettechnologies.com/sites/default/files/python/aioa-icon-type-1.svg" width="65" height="65" style="margin: auto" class="icon-img"/>',
-        'aioa-default-icon' => '<img src="https://skynettechnologies.com/sites/default/files/python/aioa-icon-type-1.svg" width="55" height="55" style="margin: auto" class="icon-img"/>',
-        'aioa-small-icon' => '<img src="https://skynettechnologies.com/sites/default/files/python/aioa-icon-type-1.svg" width="45" height="45" style="margin: auto" class="icon-img"/>',
-        'aioa-extra-small-icon' => '<img src="https://skynettechnologies.com/sites/default/files/python/aioa-icon-type-1.svg" width="35" height="35" style="margin: auto" class="icon-img"/>',
+        'aioa-big-icon' => '<img src="bundles/skynettechnologiescontaoallinoneaccessibility/icons/aioa-icon-type-1.svg" width="75" height="75" style="margin: auto" class="icon-img"/>',
+        'aioa-medium-icon' => '<img src="bundles/skynettechnologiescontaoallinoneaccessibility/icons/aioa-icon-type-1.svg" width="65" height="65" style="margin: auto" class="icon-img"/>',
+        'aioa-default-icon' => '<img src="bundles/skynettechnologiescontaoallinoneaccessibility/icons/aioa-icon-type-1.svg" width="55" height="55" style="margin: auto" class="icon-img"/>',
+        'aioa-small-icon' => '<img src="bundles/skynettechnologiescontaoallinoneaccessibility/icons/aioa-icon-type-1.svg" width="45" height="45" style="margin: auto" class="icon-img"/>',
+        'aioa-extra-small-icon' => '<img src="bundles/skynettechnologiescontaoallinoneaccessibility/icons/aioa-icon-type-1.svg" width="35" height="35" style="margin: auto" class="icon-img"/>',
     ],
     'reference' => &$GLOBALS['TL_LANG']['tl_page']['aioa_icon_size'],
     'eval' => ['tl_class' => 'width-col-md-12 input-val custom-icon-size', 'onchange' => "saveData();"],

@@ -187,7 +187,7 @@ function ChangeIcon(val) {
     console.log(val);
     const arrSize = document.querySelectorAll(".icon-img");
     arrSize.forEach(function(item) {
-        item.setAttribute("src", "https://www.skynettechnologies.com/sites/default/files/" + val + ".svg");
+        item.setAttribute("src", "bundles/skynettechnologiescontaoallinoneaccessibility/icons/" + val + ".svg");
     });
     saveData();
 }
