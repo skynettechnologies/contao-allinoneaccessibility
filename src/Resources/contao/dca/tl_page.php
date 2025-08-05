@@ -8,6 +8,7 @@
  * @author  Skynet Technologies USA LLC
  * @license MIT
  */
+
 use Contao\BackendUser;
 use Contao\System;
 
@@ -16,96 +17,92 @@ $user = BackendUser::getInstance();
 
 
 // Add user domain
-              $websitename = $_SERVER['HTTP_HOST'];
-              $username = $user->username;
-              $useremail = $user->email;
-    
-                $packageType = "free-widget";
-                    
-                // Array of details to send
-                $arrDetails = array(
-                    'name' => $username,
-                    'email' => $useremail,
-                    'company_name' => '',
-                    'website' => base64_encode($websitename),
-                    'package_type' => $packageType,
-                    'start_date' => date(DATE_ISO8601),
-                    'end_date' => '',
-                    'price' => '',
-                    'discount_price' => '0',
-                    'platform' => 'Craft',
-                    'api_key' => '',
-                    'is_trial_period' => '',
-                    'is_free_widget' => '1',
-                    'bill_address' => '',
-                    'country' => '',
-                    'state' => '',
-                    'city' => '',
-                    'post_code' => '',
-                    'transaction_id' => '',
-                    'subscr_id' => '',
-                    'payment_source' => ''
-                );
-          
-                // First API URL to fetch autologin link
-                $apiUrl = "https://ada.skynettechnologies.us/api/get-autologin-link";
-              
-                // Set up cURL for the first API request
-                $ch = curl_init($apiUrl);
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                curl_setopt($ch, CURLOPT_POST, true);
-                curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(['website' => base64_encode($websitename)]));
-                curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-                    'Content-Type: application/json'
-                ));
-            
-                // Execute the request and get the response
-                $response = curl_exec($ch);
-                if(curl_errno($ch)) {
-                   
-                    return;
-                }
-                curl_close($ch);
-            
-                // Decode the response to check if the link is present
-                $result = json_decode($response, true);
-                if (isset($result['link'])) {
-                    // Successfully got the link
-                   
-                } else {
-                    // Link not found, proceed with second API call
-                   
-            
-                    // Second API URL to add user domain
-                    $secondApiUrl = "https://ada.skynettechnologies.us/api/add-user-domain";
-            
-                    // Set up cURL for the second API request
-                    $ch = curl_init($secondApiUrl);
-                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                    curl_setopt($ch, CURLOPT_POST, true);
-                    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($arrDetails));
-                    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-                        'Content-Type: application/json'
-                    ));
-            
-                    // Execute the second request and get the response
-                    $response = curl_exec($ch);
-                    if(curl_errno($ch)) {
-                       
-                        return;
-                    }
-                    curl_close($ch);
-            
-                    // Decode the second response to handle the result
-                    $data = json_decode($response, true);
-                   
-                    if ($data['success']) {
-                     
-                    } else {
-                       
-                    }
-                }
-               
+$websitename = $_SERVER['HTTP_HOST'];
+
+$packageType = "free-widget";
+
+// Array of details to send
+$arrDetails = array(
+    'name' => $websitename,
+    'email' => 'no-reply@' . base64_encode($websitename) . '.com',
+    'company_name' => '',
+    'website' => base64_encode($websitename),
+    'package_type' => $packageType,
+    'start_date' => date(DATE_ISO8601),
+    'end_date' => '',
+    'price' => '',
+    'discount_price' => '0',
+    'platform' => 'Contao',
+    'api_key' => '',
+    'is_trial_period' => '',
+    'is_free_widget' => '1',
+    'bill_address' => '',
+    'country' => '',
+    'state' => '',
+    'city' => '',
+    'post_code' => '',
+    'transaction_id' => '',
+    'subscr_id' => '',
+    'payment_source' => ''
+);
+
+// First API URL to fetch autologin link
+$apiUrl = "https://ada.skynettechnologies.us/api/get-autologin-link";
+
+// Set up cURL for the first API request
+$ch = curl_init($apiUrl);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(['website' => base64_encode($websitename)]));
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Content-Type: application/json'
+));
+
+// Execute the request and get the response
+$response = curl_exec($ch);
+if (curl_errno($ch)) {
+
+    return;
+}
+curl_close($ch);
+
+// Decode the response to check if the link is present
+$result = json_decode($response, true);
+if (isset($result['link'])) {
+    // Successfully got the link
+
+} else {
+    // Link not found, proceed with second API call
+
+
+    // Second API URL to add user domain
+    $secondApiUrl = "https://ada.skynettechnologies.us/api/add-user-domain";
+
+    // Set up cURL for the second API request
+    $ch = curl_init($secondApiUrl);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($arrDetails));
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        'Content-Type: application/json'
+    ));
+
+    // Execute the second request and get the response
+    $response = curl_exec($ch);
+    if (curl_errno($ch)) {
+
+        return;
+    }
+    curl_close($ch);
+
+    // Decode the second response to handle the result
+    $data = json_decode($response, true);
+
+    if ($data['success']) {
+    } else {
+    }
+}
+
 
 // End user domain
 $GLOBALS['TL_CSS'][] = 'bundles/skynettechnologiescontaoallinoneaccessibility/css/aioa.css|static';
@@ -125,24 +122,24 @@ if (isset($GLOBALS['TL_DCA']['tl_page']['palettes']['rootfallback'])) {
 
 $GLOBALS['TL_DCA']['tl_page']['subpalettes']['aioa_enable'] = 'aioa_color,aioa_position_enable,aioa_position,aioa_custom_position_lr,aioa_custom_position_rl,aioa_custom_position_bt,aioa_custom_position_tb,aioa_widget_size,aioa_icon_type,aioa_customsize_enable,aioa_custom_size,aioa_icon_size';
 
- /*
+/*
   * Add the fields
   */
- $GLOBALS['TL_DCA']['tl_page']['fields']['aioa_enable'] = [
-     'label' => &$GLOBALS['TL_LANG']['tl_page']['aioa_enable'],
-     'exclude' => true,
-     'inputType' => 'checkbox',
-     'eval' => ['submitOnChange' => true, 'tl_class' => 'clr'],
-     'sql' => "char(1) NOT NULL default ''",
- ];
+$GLOBALS['TL_DCA']['tl_page']['fields']['aioa_enable'] = [
+    'label' => &$GLOBALS['TL_LANG']['tl_page']['aioa_enable'],
+    'exclude' => true,
+    'inputType' => 'checkbox',
+    'eval' => ['submitOnChange' => true, 'tl_class' => 'clr'],
+    'sql' => "char(1) NOT NULL default ''",
+];
 
 
- $GLOBALS['TL_DCA']['tl_page']['fields']['aioa_color'] = [
+$GLOBALS['TL_DCA']['tl_page']['fields']['aioa_color'] = [
     'label' => &$GLOBALS['TL_LANG']['tl_page']['aioa_color'],
     'default' => '420083',
     'exclude' => true,
     'inputType' => 'text',
-    'eval' => array('maxlength'=>6, 'size'=>1,'isHexColor'=>true,'tl_class'=>'width-col-md-3 input-val','placeholder' => 'Hexa Color Code','onchange' => "saveData();"),
+    'eval' => array('maxlength' => 6, 'size' => 1, 'isHexColor' => true, 'tl_class' => 'width-col-md-3 input-val', 'placeholder' => 'Hexa Color Code', 'onchange' => "saveData();"),
     'sql' => "text NULL",
 ];
 
@@ -151,7 +148,7 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['aioa_position_enable'] = [
     'exclude' => true,
     'inputType' => 'checkbox',
     'eval' => ['tl_class' => 'common-class width-col-md-12 input-val', 'onchange' => "saveData();"],
-      'sql' => "text NULL",
+    'sql' => "text NULL",
     'save_callback' => [
         function ($value) {
             return $value ? '1' : '0';
@@ -159,15 +156,15 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['aioa_position_enable'] = [
     ]
 ];
 
- 
+
 $GLOBALS['TL_DCA']['tl_page']['fields']['aioa_position'] = [
     'label' => &$GLOBALS['TL_LANG']['tl_page']['aioa_position'],
     'default' => 'bottom_right',
     'exclude' => true,
     'inputType' => 'select',
-    'options' => ['bottom_right','bottom_left','bottom_center','top_left','top_right','top_center','middel_left','middel_right'],
+    'options' => ['bottom_right', 'bottom_left', 'bottom_center', 'top_left', 'top_right', 'top_center', 'middel_left', 'middel_right'],
     'reference' => &$GLOBALS['TL_LANG']['tl_page']['aioa_position'],
-    'eval' => ['tl_class'=>'width-col-md-3 input-val1 position-field','onchange' => "saveData();"],
+    'eval' => ['tl_class' => 'width-col-md-3 input-val1 position-field', 'onchange' => "saveData();"],
     'sql' => 'text NULL',
 ];
 
@@ -180,8 +177,8 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['aioa_custom_position_lr'] = [
     'default' => '',
     'exclude' => true,
     'inputType' => 'text',
-     'reference' => &$GLOBALS['TL_LANG']['tl_page']['aioa_custom_position_lr'],
-    'eval' => array('tl_class'=>'width-col-md-6 input-val custom-position-field','onchange' => "saveData();"),
+    'reference' => &$GLOBALS['TL_LANG']['tl_page']['aioa_custom_position_lr'],
+    'eval' => array('tl_class' => 'width-col-md-6 input-val custom-position-field', 'onchange' => "saveData();"),
     'sql' => "text NULL",
 ];
 
@@ -190,9 +187,9 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['aioa_custom_position_rl'] = [
     'default' => 'To the right',
     'exclude' => true,
     'inputType' => 'select',
-    'options' => ['To the right','To the left'],
+    'options' => ['To the right', 'To the left'],
     'reference' => &$GLOBALS['TL_LANG']['tl_page']['aioa_custom_position_rl'],
-    'eval' => ['tl_class'=>'width-col-md-6 input-val1 custom-position-field','onchange' => "saveData();"],
+    'eval' => ['tl_class' => 'width-col-md-6 input-val1 custom-position-field', 'onchange' => "saveData();"],
     'sql' => 'text NULL',
 ];
 
@@ -202,8 +199,8 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['aioa_custom_position_bt'] = [
     'default' => '',
     'exclude' => true,
     'inputType' => 'text',
-        'reference' => &$GLOBALS['TL_LANG']['tl_page']['aioa_custom_position_bt'],
-    'eval' => array('tl_class'=>'width-col-md-6 input-val custom-position-field','onchange' => "saveData();"),
+    'reference' => &$GLOBALS['TL_LANG']['tl_page']['aioa_custom_position_bt'],
+    'eval' => array('tl_class' => 'width-col-md-6 input-val custom-position-field', 'onchange' => "saveData();"),
     'sql' => "text NULL",
 ];
 
@@ -212,9 +209,9 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['aioa_custom_position_tb'] = [
     'default' => 'To the bottom',
     'exclude' => true,
     'inputType' => 'select',
-    'options' => ['To the bottom','To the top'],
+    'options' => ['To the bottom', 'To the top'],
     'reference' => &$GLOBALS['TL_LANG']['tl_page']['aioa_custom_position_tb'],
-    'eval' => ['tl_class'=>'width-col-md-6 input-val1 custom-position-field','onchange' => "saveData();"],
+    'eval' => ['tl_class' => 'width-col-md-6 input-val1 custom-position-field', 'onchange' => "saveData();"],
     'sql' => 'text NULL',
 ];
 
@@ -223,12 +220,12 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['aioa_custom_position_tb'] = [
 
 $GLOBALS['TL_DCA']['tl_page']['fields']['aioa_widget_size'] = [
     'label' => &$GLOBALS['TL_LANG']['tl_page']['aioa_widget_size'],
-   
+
     'exclude' => true,
     'inputType' => 'radio',
     'options' => ['Regular Size', 'Oversize'],
     'eval' => ['tl_class' => 'common-class width-col-md-12 input-val', 'onchange' => "saveData();"],
-     'sql' => 'text NULL',
+    'sql' => 'text NULL',
     'save_callback' => [
         function ($value) {
             return ($value === 'Oversize') ? '1' : '0'; // Convert value before saving
@@ -239,7 +236,7 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['aioa_widget_size'] = [
             return ($value === '1') ? 'Oversize' : 'Regular Size'; // Convert stored value back to readable text
         }
     ],
-   
+
 ];
 
 
@@ -267,7 +264,7 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['aioa_icon_type'] = [
         'tl_class' => 'width-col-md-12 common-class input-val',
         'style' => 'border:2px',
         'onchange' => "ChangeIcon(this.value);",
-        
+
     ],
     'sql' => "text NULL",
 ];
@@ -278,7 +275,7 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['aioa_icon_type']['eval']['tl_class'] = 
 
 for ($i = 1; $i <= 29; $i++) {
     $key = "aioa-icon-type-$i";
-        $GLOBALS['TL_DCA']['tl_page']['fields']['aioa_icon_type']['options'][$key] = '<img src="bundles/skynettechnologiescontaoallinoneaccessibility/icons/aioa-icon-type-' . $i . '.svg" width="65" height="65" id="aioa-icon-type-' . $i . '-img" style="margin: auto"/>';
+    $GLOBALS['TL_DCA']['tl_page']['fields']['aioa_icon_type']['options'][$key] = '<img src="bundles/skynettechnologiescontaoallinoneaccessibility/icons/aioa-icon-type-' . $i . '.svg" width="65" height="65" id="aioa-icon-type-' . $i . '-img" style="margin: auto"/>';
 }
 
 // widget icon custom size
@@ -302,7 +299,7 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['aioa_customsize_enable'] = [
     'exclude' => true,
     'inputType' => 'checkbox',
     'eval' => ['tl_class' => 'common-class width-col-md-12 input-val', 'onchange' => "saveData();"],
-     'sql' => 'text NULL',
+    'sql' => 'text NULL',
     'save_callback' => [
         function ($value) {
             return $value ? '1' : '0';
@@ -314,7 +311,7 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['aioa_custom_size'] = [
     'label' => &$GLOBALS['TL_LANG']['tl_page']['aioa_custom_size'],
     'exclude' => true,
     'inputType' => 'text',
-      'reference' => &$GLOBALS['TL_LANG']['tl_page']['aioa_custom_size'],
+    'reference' => &$GLOBALS['TL_LANG']['tl_page']['aioa_custom_size'],
     'eval' => ['tl_class' => 'width-col-md-6 input-val custom-size-field', 'onchange' => "saveData();"],
     'sql' => "text NULL",
 ];
