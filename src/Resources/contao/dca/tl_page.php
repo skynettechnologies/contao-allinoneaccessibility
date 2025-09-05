@@ -98,9 +98,6 @@ if (isset($result['link'])) {
     // Decode the second response to handle the result
     $data = json_decode($response, true);
 
-    if ($data['success']) {
-    } else {
-    }
 }
 
 
