@@ -155,7 +155,8 @@ English (USA), English (UK), English (Australian), English (Canadian), English (
 ## Installation
 
 ### Prerequisites
-- Contao version ^5.0 
+
+- Contao version ^5.0
 
 ### Steps
 
@@ -166,7 +167,7 @@ composer require skynettechnologies/contao-allinoneaccessibility
 ```
 
 ``` bash
-php vendor/bin/contao-console contao: migrate
+php vendor/bin/contao-console contao:migrate
 ```
 
 ## Configuration
@@ -176,6 +177,7 @@ php vendor/bin/contao-console contao: migrate
 2. Check your website.
 
 ## Live Demo
+
 https://contaonew.skynettechnologies.us/
 
 ## CORS Policy Configuration

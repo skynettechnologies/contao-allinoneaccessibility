@@ -16,90 +16,6 @@ System::loadLanguageFile('default');
 $user = BackendUser::getInstance();
 
 
-// Add user domain
-$websitename = $_SERVER['HTTP_HOST'];
-
-$packageType = "free-widget";
-
-// Array of details to send
-$arrDetails = array(
-    'name' => $websitename,
-    'email' => 'no-reply@' . base64_encode($websitename) . '.com',
-    'company_name' => '',
-    'website' => base64_encode($websitename),
-    'package_type' => $packageType,
-    'start_date' => date(DATE_ISO8601),
-    'end_date' => '',
-    'price' => '',
-    'discount_price' => '0',
-    'platform' => 'Contao',
-    'api_key' => '',
-    'is_trial_period' => '',
-    'is_free_widget' => '1',
-    'bill_address' => '',
-    'country' => '',
-    'state' => '',
-    'city' => '',
-    'post_code' => '',
-    'transaction_id' => '',
-    'subscr_id' => '',
-    'payment_source' => ''
-);
-
-// First API URL to fetch autologin link
-$apiUrl = "https://ada.skynettechnologies.us/api/get-autologin-link";
-
-// Set up cURL for the first API request
-$ch = curl_init($apiUrl);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_POST, true);
-curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(['website' => base64_encode($websitename)]));
-curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-    'Content-Type: application/json'
-));
-
-// Execute the request and get the response
-$response = curl_exec($ch);
-if (curl_errno($ch)) {
-
-    return;
-}
-curl_close($ch);
-
-// Decode the response to check if the link is present
-$result = json_decode($response, true);
-if (isset($result['link'])) {
-    // Successfully got the link
-
-} else {
-    // Link not found, proceed with second API call
-
-
-    // Second API URL to add user domain
-    $secondApiUrl = "https://ada.skynettechnologies.us/api/add-user-domain";
-
-    // Set up cURL for the second API request
-    $ch = curl_init($secondApiUrl);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($arrDetails));
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-        'Content-Type: application/json'
-    ));
-
-    // Execute the second request and get the response
-    $response = curl_exec($ch);
-    if (curl_errno($ch)) {
-
-        return;
-    }
-    curl_close($ch);
-
-    // Decode the second response to handle the result
-    $data = json_decode($response, true);
-
-}
-
 
 // End user domain
 $GLOBALS['TL_CSS'][] = 'bundles/skynettechnologiescontaoallinoneaccessibility/css/aioa.css|static';
@@ -333,3 +249,87 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['aioa_icon_size'] = [
 
 /* add aioa.js file for some logic. which are uses in setting form */
 $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/skynettechnologiescontaoallinoneaccessibility/js/aioa.js|static';
+// Add user domain (safe for CLI and HTTP)
+$websitename = (php_sapi_name() === 'cli') ? '' : ($_SERVER['HTTP_HOST'] ?? '');
+
+
+$packageType = "free-widget";
+
+// Array of details to send
+$arrDetails = array(
+    'name' => $websitename,
+    'email' => 'no-reply@' . base64_encode($websitename) . '.com',
+    'company_name' => '',
+    'website' => base64_encode($websitename),
+    'package_type' => $packageType,
+    'start_date' => date(DATE_ISO8601),
+    'end_date' => '',
+    'price' => '',
+    'discount_price' => '0',
+    'platform' => 'Contao',
+    'api_key' => '',
+    'is_trial_period' => '',
+    'is_free_widget' => '1',
+    'bill_address' => '',
+    'country' => '',
+    'state' => '',
+    'city' => '',
+    'post_code' => '',
+    'transaction_id' => '',
+    'subscr_id' => '',
+    'payment_source' => ''
+);
+
+// First API URL to fetch autologin link
+$apiUrl = "https://ada.skynettechnologies.us/api/get-autologin-link";
+
+// Set up cURL for the first API request
+$ch = curl_init($apiUrl);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(['website' => base64_encode($websitename)]));
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Content-Type: application/json'
+));
+
+// Execute the request and get the response
+$response = curl_exec($ch);
+if (curl_errno($ch)) {
+
+    return;
+}
+curl_close($ch);
+
+// Decode the response to check if the link is present
+$result = json_decode($response, true);
+if (isset($result['link'])) {
+    // Successfully got the link
+
+} else {
+    // Link not found, proceed with second API call
+
+
+    // Second API URL to add user domain
+    $secondApiUrl = "https://ada.skynettechnologies.us/api/add-user-domain";
+
+    // Set up cURL for the second API request
+    $ch = curl_init($secondApiUrl);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($arrDetails));
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        'Content-Type: application/json'
+    ));
+
+    // Execute the second request and get the response
+    $response = curl_exec($ch);
+    if (curl_errno($ch)) {
+
+        return;
+    }
+    curl_close($ch);
+
+    // Decode the second response to handle the result
+    $data = json_decode($response, true);
+
+}
