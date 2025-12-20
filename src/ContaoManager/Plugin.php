@@ -1,35 +1,19 @@
 <?php
-
-/*
- * All in One Accessibility extension for Contao Open Source CMS
- *
- * Copyright (C) 2023 Skynet Technologies USA LLC
- *
- * @author  Skynet Technologies USA LLC
- * @license MIT
- */
-
 namespace Skynettechnologies\ContaoAllinoneaccessibility\ContaoManager;
 
 use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
 use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
 use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
+use Contao\CoreBundle\ContaoCoreBundle;
+use Skynettechnologies\ContaoAllinoneaccessibility\ContaoAllinoneaccessibilityBundle;
 
-/**
- * Class Plugin.
- *
- * @codeCoverageIgnore
- */ 
 class Plugin implements BundlePluginInterface
 {
-    /**
-     * @return array
-     */
-    public function getBundles(ParserInterface $parser)
+    public function getBundles(ParserInterface $parser): array
     {
         return [
-            BundleConfig::create('Skynettechnologies\ContaoAllinoneaccessibility\SkynettechnologiesContaoAllinoneaccessibility')
-                ->setLoadAfter(['Contao\CoreBundle\ContaoCoreBundle']),
+            BundleConfig::create(ContaoAllinoneaccessibilityBundle::class)
+                ->setLoadAfter([ContaoCoreBundle::class]),
         ];
     }
 }

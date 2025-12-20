@@ -166,15 +166,10 @@ Run the following command from your project root:
 composer require skynettechnologies/contao-allinoneaccessibility
 ```
 
-``` bash
-php vendor/bin/contao-console contao:migrate
-```
-
 ## Configuration
 
-1. Go to Admin pannel -> Pages/Site structure  Now You can see All in One Accessibility Setting. Check "Enable All in One Accessibilty" and Save.
-
-2. Check your website.
+1. Go to Admin Panel → System → All in One Accessibility Settings, update your settings, and save.  
+2. Check your website to see the All in One Accessibility widget on the front end.
 
 ## Live Demo
 

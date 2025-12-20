@@ -1,0 +1,13 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  Skynettechnologies\ContaoAllinoneaccessibility\:
+    resource: ../src
+    exclude: ../src/{ContaoManager,DependencyInjection}
+
+  Skynettechnologies\ContaoAllinoneaccessibility\EventListener\AddFrontendAssetsListener:
+    public: true
+    tags:
+      - { name: contao.hook, hook: generatePage }
