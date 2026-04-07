@@ -1,4 +1,30 @@
 <?php
+
+
+      $ip = $_SERVER['REMOTE_ADDR'];
+
+      // Handle proxy / VPN / Cloudflare
+      if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+          $ip = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR'])[0];
+      }
+      $apiUrl = "https://ipwho.is/" . trim($ip);
+
+      $ch = curl_init($apiUrl);
+      curl_setopt_array($ch, [
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_SSL_VERIFYPEER => false,
+      ]);
+
+      $response = curl_exec($ch);
+      curl_close($ch);
+
+      $data = json_decode($response, true);
+      $isEU = $data['is_eu'] ?? 0;
+      
+      // Print value (1 or 0)
+      $iseu = $isEU ? 0 : 1;
+
+          
 $websitename = $_SERVER['HTTP_HOST'];
 $domain = $_SERVER['HTTP_HOST'];
   $userName = $websitename;
@@ -252,14 +278,14 @@ $domain = $_SERVER['HTTP_HOST'];
                   </div>
                   <div
                     class="js-form-item form-item js-form-type-radio form-type-radio js-form-item-position form-item-position">
-                    <input type="radio" id="edit-position-middel-left" name="position" value="middel_left"
+                    <input type="radio" id="edit-position-middel-left" name="position" value="middle_left"
                       class="form-radio" />
 
                     <label for="edit-position-middel-left" class="option">Middle left</label>
                   </div>
                   <div
                     class="js-form-item form-item js-form-type-radio form-type-radio js-form-item-position form-item-position">
-                    <input type="radio" id="edit-position-middel-right" name="position" value="middel_right"
+                    <input type="radio" id="edit-position-middel-right" name="position" value="middle_right"
                       class="form-radio" />
 
                     <label for="edit-position-middel-right" class="option">Middle Right</label>

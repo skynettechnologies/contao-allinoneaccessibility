@@ -4,7 +4,7 @@
     "keywords": ["contao","WCAG","ATAG","ADA", "Section 508","accessibility compliance","disability friendly site","accessibility rules","web accessibility","compliance","WCAG 2.1","web accessibility widget","accessibility widget","accessibility plugin","web accessibility plugin","digital accessibility plugin","digital accessibility widget","web accessibility compliance","digital accessibility compliance","accessibe alternative","userways alternative","accessible website","Australian DDA","European EAA EN 301 549","UK Equality Act","Israeli Standard 5568 "],
     "type": "contao-module",
     "license": "LGPL-3.0+",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "authors": [
         {
             "name": "Skynet Technologies USA LLC"
