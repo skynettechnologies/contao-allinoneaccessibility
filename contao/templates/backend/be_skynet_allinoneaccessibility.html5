@@ -41,7 +41,7 @@ $domain = $_SERVER['HTTP_HOST'];
             'end_date' => '',
             'price' => '',
             'discount_price' => '0',
-            'platform' => 'Concrete CMS',
+            'platform' => 'Contao CMS',
             'api_key' => '',
             'is_trial_period' => '',
             'is_free_widget' => '1',
@@ -53,37 +53,26 @@ $domain = $_SERVER['HTTP_HOST'];
             'transaction_id' => '',
             'subscr_id' => '',
             'payment_source' => '',
-            'no_required_eu' => '',
+          'no_required_eu' => $iseu,
         ];
 
-        // First API: get autologin link
-        $apiUrl = "https://ada.skynettechnologies.us/api/get-autologin-link";
-        $ch = curl_init($apiUrl);
+       // Directly call add-user-domain API
+        $secondApiUrl = "https://ada.skynettechnologies.us/api/add-user-domain";
+        $ch = curl_init($secondApiUrl);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(['website' => base64_encode($websitename)]));
-        curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($arrDetails));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'Content-Type: application/json'
+        ));
+
         $response = curl_exec($ch);
-        if (curl_errno($ch)) error_log('cURL error: ' . curl_error($ch));
+        if (curl_errno($ch)) {
+            error_log('cURL error: ' . curl_error($ch));
+        }
         curl_close($ch);
 
-        $result = json_decode($response, true);
-
-        // Second API: add user domain if autologin link not found
-        if (!isset($result['link'])) {
-            $secondApiUrl = "https://ada.skynettechnologies.us/api/add-user-domain";
-            $ch = curl_init($secondApiUrl);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_POST, true);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($arrDetails));
-            curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
-            $response = curl_exec($ch);
-            if (curl_errno($ch)) error_log('cURL error: ' . curl_error($ch));
-            curl_close($ch);
-
-            $data = json_decode($response, true);
-            // Optionally: handle $data
-        }
+        $data = json_decode($response, true);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -93,6 +82,9 @@ $domain = $_SERVER['HTTP_HOST'];
 <meta name="MobileOptimized" content="width" />
 <meta name="HandheldFriendly" content="true" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<?php if (!isset($_GET['reload_once'])): ?>
+    <meta http-equiv="refresh" content="0;url=?do=skynet_allinoneaccessibility&reload_once=1">
+<?php endif; ?>
 <meta http-equiv="x-ua-compatible" content="ie=edge" />
 <link rel="icon" href="https://www.skynettechnologies.com/sites/default/files/favicon_0.webp" type="image/png" />
 <link rel="stylesheet" href="/bundles/contaoallinoneaccessibility/css/bootstrap.min.css">
@@ -892,7 +884,7 @@ $domain = $_SERVER['HTTP_HOST'];
     console.log("domain : " + domain);
     const defaultSettings = {
       widget_position: "bottom_right",
-      widget_color_code: "#861818",
+      widget_color_code: "#420083",
       widget_icon_type: "aioa-icon-type-1",
       widget_icon_size: "aioa-small-icon",
     };
