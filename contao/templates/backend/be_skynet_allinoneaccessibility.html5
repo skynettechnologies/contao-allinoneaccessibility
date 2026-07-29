@@ -135,7 +135,10 @@ $domain = $_SERVER['HTTP_HOST'];
   .form-control {
     color: black !important;
   }
-
+h1
+{
+  color:initial !important;
+}
 </style>
 <title>All in One Accessibility Dashboard</title>
 </head>
@@ -144,29 +147,32 @@ $domain = $_SERVER['HTTP_HOST'];
 
 
 
-  <img src="https://ada.skynettechnologies.us/public/trial-assets/images/all-in-one-accessibility-logo.svg" alt="All in One Accessibility - Skynet Technologies" style="
-    
-    align-items: center;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 30%;
-    margin-top: 3em;
-    top: unset;
 
-">
 
   <input type="hidden" value="<?= $domain ?>" name="domain">
   <div class="shopify-wrap-block">
     <div class="container">
+              
+           
       <div class="set-width">
         <div class="all-in-one-accessibility-wrap">
           <div class="accessibility-settings">
+         
             <div class="all-one-accessibility-form">
+      
               <div class="all-one-accessibility-form-inner">
 
-              
-                <form class="form-horizontal" role="form" method="post" action="" style="margin: 0px 60px 0px 60px">
+               <img src="https://ada.skynettechnologies.us/public/trial-assets/images/all-in-one-accessibility-logo.svg" alt="All in One Accessibility - Skynet Technologies" style="
+                  
+                  align-items: center;
+                    display: block;
+                  margin-left: auto;
+                  margin-right: auto;
+                  width: 70%;
+                  padding: 1rem;
+                  margin-bottom: 1rem;
+
+              ">
 
 
                   <div class="mb-3 row">
@@ -225,8 +231,7 @@ $domain = $_SERVER['HTTP_HOST'];
                     <div class="row">
                       <div class="col-auto">
                         <div class="input-group mb-3">
-                          <input type="number" style="height:auto;border-bottom-right-radius: 0px;
-    border-top-right-radius: 0px;" min="0" max="250" class="form-control" id="custom_position_y_value"
+                          <input type="number" style="height:auto;border-bottom-right-radius: 0px;border-top-right-radius: 0px;" min="0" max="250" class="form-control" id="custom_position_y_value"
                             aria-label="Value in pixels" aria-describedby="pos-value-input_2" oninput="this.value = Math.min(Math.max(this.value, 0), 250)" />
                           <span class="input-group-text" style="height:auto" id="pos-value-input_2">PX</span>
                         </div>
@@ -859,7 +864,7 @@ $domain = $_SERVER['HTTP_HOST'];
 
 
               </div>
-              </form>
+             
             </div>
           </div>
         </div>

@@ -173,7 +173,7 @@ composer require skynettechnologies/contao-allinoneaccessibility
 
 ## Live Demo
 
-https://contaonew.skynettechnologies.us/
+https://contao.skynettechnologies.us/
 
 ## CORS Policy Configuration
 
